@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>传晓晓 · 清新个人页（含视频）</title>
+  <style>
+    /* ===== 原有清新风格 完全保留 & 增强 ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f5f9fc;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #2b3e4f;
+      padding: 2rem 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* 主卡片 */
+    .container {
+      max-width: 960px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(2px);
+      background-color: #ffffffdd;
+      border-radius: 36px;
+      padding: 2.8rem 2.5rem;
+      box-shadow: 0 12px 28px -8px rgba(165, 185, 195, 0.2),
+                  0 4px 12px rgba(0, 20, 30, 0.03);
+      border: 1px solid #ecf3f8;
+    }
+
+    /* 页头区域 — 头像+名字并排 */
+    header {
+      margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem 2.5rem;
+    }
+
+    /* 头像卡片区 */
+    .avatar-frame {
+      flex-shrink: 0;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #e5f0f7, #cde1ed);
+      padding: 6px;
+      box-shadow: 0 8px 18px -6px rgba(70, 120, 140, 0.2);
+    }
+
+    .avatar-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid white;
+      background-color: #bdd7e7;
+      display: block;
+    }
+
+    /* 名字与标识区域 */
+    .name-title-block {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .name-title {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.2rem 0.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 450;
+      letter-spacing: -0.02em;
+      color: #1d3b4f;
+      line-height: 1.2;
+    }
+
+    .badge {
+      background: #dbeaf2;
+      padding: 0.3rem 1rem;
+      border-radius: 60px;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #1f4a5f;
+      border: 1px solid #c6dde9;
+      margin-left: 0.5rem;
+      white-space: nowrap;
+    }
+
+    .subhead {
+      font-size: 1.3rem;
+      font-weight: 330;
+      color: #54738f;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.8rem 1.5rem;
+      margin-top: 0.4rem;
+      border-left: 4px solid #a6cfdf;
+      padding-left: 1.2rem;
+    }
+
+    .subhead span {
+      background: #eaf3f9;
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+      font-size: 1rem;
+      font-weight: 380;
+      color: #255f77;
+    }
+
+    /* 分隔装饰 */
+    .divider {
+      width: 80px;
+      height: 2px;
+      background: #cde3ed;
+      margin: 2rem 0 2rem 0;
+      border-radius: 10px;
+    }
+
+    /* 关于我 */
+    .about p {
+      font-size: 1.2rem;
+      font-weight: 320;
+      margin-bottom: 1.2rem;
+      color: #2b4a5c;
+      background: #f1f9ff;
+      padding: 1.2rem 1.8rem;
+      border-radius: 32px;
+      border: 1px solid #deeff8;
+      box-shadow: inset 0 1px 3px #ffffff, 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    /* 网格布局 */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem 2rem;
+      margin: 2.5rem 0 2rem;
+    }
+
+    .info-card {
+      background: #fbfeff;
+      border-radius: 26px;
+      padding: 1.8rem 1.6rem;
+      border: 1px solid #e1f0f7;
+      transition: all 0.2s ease;
+    }
+    .info-card:hover {
+      border-color: #c1ddec;
+      background: #ffffff;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 440;
+      color: #1d4b62;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-title i {
+      font-size: 1.5rem;
+      opacity: 0.75;
+    }
+
+    /* 教育详情 */
+    .edu-item {
+      margin-bottom: 1.1rem;
+    }
+    .edu-item h3 {
+      font-weight: 500;
+      font-size: 1.2rem;
+      color: #174353;
+      margin-bottom: 0.1rem;
+    }
+    .edu-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      color: #5f7e92;
+      font-size: 0.95rem;
+      margin-bottom: 0.45rem;
+    }
+    .edu-desc {
+      color: #395f74;
+      font-weight: 330;
+    }
+
+    /* 联系列表 */
+    .contact-list {
+      list-style: none;
+    }
+    .contact-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.6rem 0;
+      border-bottom: 1px dashed #d5e7f1;
+      font-size: 1.05rem;
+    }
+    .contact-list li:last-child {
+      border-bottom: none;
+    }
+    .contact-icon {
+      width: 28px;
+      font-size: 1.3rem;
+      color: #5086a5;
+    }
+
+    /* 标签 */
+    .skill-tags, .interest-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.7rem;
+      margin: 0.8rem 0 1.5rem 0;
+    }
+    .skill-tags span, .interest-tags span {
+      background: #e1f0f7;
+      padding: 0.3rem 1.1rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      color: #1c4d64;
+      border: 1px solid #c8deeb;
+      font-weight: 350;
+      transition: all 0.1s;
+    }
+    .skill-tags span:hover, .interest-tags span:hover {
+      background: #cfe1ed;
+      border-color: #9cbfd3;
+      color: #103745;
+    }
+
+    /* 大三特别板块 */
+    .quote-note {
+      margin: 2rem 0 1.2rem 0;
+      background: #e3f0f7;
+      border-radius: 30px;
+      padding: 1.2rem 2rem;
+      font-style: normal;
+      color: #175066;
+      border: 1px solid #c0dae9;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+    .quote-note p {
+      font-size: 1.15rem;
+      font-weight: 330;
+    }
+    .quote-note .emoji-big {
+      font-size: 2rem;
+      filter: drop-shadow(0 2px 2px rgba(110, 150, 170, 0.2));
+    }
+
+    /* ===== 新增视频区域样式 ===== */
+    .video-section {
+      margin: 2.5rem 0 1.5rem 0;
+      text-align: center;
+    }
+    
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 720px;      /* 限制最大宽度，保持整洁 */
+      margin: 1rem auto;
+      border-radius: 28px;
+      overflow: hidden;       /* 圆角裁剪 */
+      box-shadow: 0 12px 24px -10px rgba(50, 100, 120, 0.15);
+      aspect-ratio: 16 / 9;   /* 保持16:9比例 */
+      background: #d1e2ed;    /* 加载前的背景色 */
+    }
+    
+    /* B站iframe铺满容器 */
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .video-caption {
+      color: #5f7e92;
+      font-size: 1rem;
+      margin-top: 0.6rem;
+      letter-spacing: 0.3px;
+    }
+
+    /* footer */
+    footer {
+      margin-top: 2.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #759bb3;
+      border-top: 1px solid #d4e5f0;
+      padding-top: 1.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    footer a {
+      color: #3a6c87;
+      text-decoration: none;
+      border-bottom: 1px dotted #a7c9dd;
+    }
+    footer a:hover {
+      border-bottom: 2px solid #5086a5;
+    }
+
+    /* 移动端优化 */
+    @media (max-width: 700px) {
+      body { padding: 1.2rem; }
+      .container { padding: 1.8rem 1.5rem; }
+      h1 { font-size: 2.3rem; }
+      .info-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+      .subhead { font-size: 1.1rem; }
+      .badge { font-size: 0.85rem; padding: 0.2rem 0.8rem; }
+      header { gap: 1.5rem; justify-content: center; }
+      .name-title-block { text-align: left; }
+      .avatar-frame { width: 110px; height: 110px; }
+      .video-wrapper { border-radius: 20px; }
+    }
+
+    /* 装饰小水滴 */
+    .dot-bg {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.2;
+      background-image: radial-gradient(#aac9dd 1.2px, transparent 1.2px);
+      background-size: 28px 28px;
+    }
+
+    /* 微小波浪 */
+    .wave-mini {
+      position: relative;
+      width: 100%;
+      max-width: 880px;
+      margin: 0 auto;
+      text-align: left;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+    .wave-mini div {
+      height: 8px;
+      width: 100%;
+      background: linear-gradient(90deg, transparent, #aacfdf, #d5eaf5, #aacfdf, transparent);
+      border-radius: 4px;
+      margin-top: 0.3rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="dot-bg"></div>
+
+  <div class="container">
+    <!-- 头部：头像+名字 -->
+    <header>
+      <div class="avatar-frame">
+        <img src="https://picsum.photos/id/64/1024/1024" 
+             alt="传晓晓的照片 · 湖边树木"
+             title="传晓晓 · 个人照">
+      </div>
+
+      <div class="name-title-block">
+        <div class="name-title">
+          <h1>传晓晓</h1>
+          <span class="badge">大三 · 汉语国际教育</span>
+        </div>
+        <div class="subhead">
+          用语言搭建文化桥梁
+          <span>📚 国际中文教育</span>
+          <span>☕️ 清新·笃学</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 自我介绍 -->
+    <section class="about">
+      <p>
+        🌱 我是传晓晓，一名对汉语教学充满热情的大三学生。相信语言是理解世界的窗口，
+        喜欢将古典文学、当代文化融入教学思考。正在努力成为有温度的汉语文化传播者。
+      </p>
+    </section>
+
+    <!-- 核心网格 -->
+    <div class="info-grid">
+      <!-- 左栏: 教育背景 + 联系方式 -->
+      <div class="info-card">
+        <div class="card-title">
+          <i>📖</i> 教育背景
+        </div>
+        <div class="edu-item">
+          <h3>汉语国际教育 本科</h3>
+          <div class="edu-meta">
+            <span>🔹 2022 – 2026</span>
+            <span>🔹 大三学年</span>
+          </div>
+          <div class="edu-desc">
+            主修：现代汉语、对外汉语教学法、跨文化交际、中国古代文学、第二语言习得。
+          </div>
+        </div>
+        <div style="margin: 1.6rem 0 0.6rem;">
+          <div class="card-title" style="margin-bottom: 0.8rem;">
+            <i>✉️</i> 联系
+          </div>
+          <ul class="contact-list">
+            <li><span class="contact-icon">📧</span> chuan.xiaoxiao@edu.cn</li>
+            <li><span class="contact-icon">📱</span> +86 130 1111 2379</li>
+            <li><span class="contact-icon">🌐</span> 北京 · 人文学院</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 右栏: 技能 & 兴趣 -->
+      <div class="info-card">
+        <div class="card-title">
+          <i>✨</i> 教学技能
+        </div>
+        <div class="skill-tags">
+          <span>普通话二甲</span>
+          <span>教案设计</span>
+          <span>课堂管理</span>
+          <span>基础韩语</span>
+          <span>HSK辅导</span>
+          <span>PPT制作</span>
+          <span>跨文化沟通</span>
+        </div>
+
+        <div class="card-title" style="margin-top: 1.8rem;">
+          <i>🎐</i> 兴趣与文化
+        </div>
+        <div class="interest-tags">
+          <span>书法</span>
+          <span>中国茶</span>
+          <span>古典诗词</span>
+          <span>旅行</span>
+          <span>民间故事</span>
+          <span>古琴听音</span>
+          <span>手作书</span>
+        </div>
+
+        <!-- 一句清新小语 -->
+        <div style="margin-top: 1.8rem; font-size: 1rem; color: #46758b; border-left: 2px solid #b3d6e9; padding-left: 1rem;">
+          “教的是语言，连接的是人心”
+        </div>
+      </div>
+    </div>
+
+    <!-- 大三特别板块 -->
+    <div class="quote-note">
+      <span class="emoji-big">🌿</span>
+      <p>
+        大三正在参与国际中文教学微课项目，同时辅修教育心理学。期待明年有机会
+        到海外孔院实习，将汉语之美带给更多孩子。
+      </p>
+    </div>
+
+    <!-- ===== 新增的视频嵌入区域（B站） ===== -->
+    <div class="video-section">
+      <!-- 使用与卡片标题统一的风格 -->
+      <div class="card-title" style="justify-content: center; margin-bottom: 0.5rem;">
+        <i>📺</i> 我的教学实践·微课片段
+      </div>
+      <!-- 视频容器：适配B站iframe，保持圆角柔和阴影 -->
+      <div class="video-wrapper">
+        <!-- 直接将您提供的B站嵌入代码放在这里 -->
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=116177690957747&bvid=BV1j8PyzLE1r&cid=36457156380&p=1" 
+                scrolling="no" 
+                border="0" 
+                frameborder="no" 
+                framespacing="0" 
+                allowfullscreen="true">
+        </iframe>
+      </div>
+      <div class="video-caption">
+        ⏺️ 微课试讲 · 用故事带学生感受汉语韵味
+      </div>
+    </div>
+
+    <!-- 分隔线 -->
+    <div class="divider"></div>
+
+    <!-- 足迹入口 -->
+    <div style="display: flex; gap: 1.8rem; flex-wrap: wrap; justify-content: left; align-items: center; color: #537e96;">
+      <span style="display: flex; align-items: center; gap: 0.3rem;">🕊️ 教学随笔</span>
+      <span style="display: flex; align-items: center; gap: 0.3rem;">📋 教案集</span>
+      <span style="display: flex; align-items: center; gap: 0.3rem;">📸 文化采风</span>
+      <span style="display: flex; align-items: center; gap: 0.3rem;">🔖 读书笔记</span>
+    </div>
+
+    <!-- footer -->
+    <footer>
+      <span>© 2025 传晓晓 · 清新个人页</span>
+      <span>设计 · 简约</span>
+      <a href="#">📧 发送邮件</a>
+      <a href="#">📋 简历PDF</a>
+    </footer>
+  </div>
+
+  <!-- 波浪装饰 -->
+  <div class="wave-mini">
+    <div></div>
+  </div>
+</body>
+</html>
